@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 $primary: #16183e;
 $secondary: #f5f5f5;
+$tertiary: #000;
 
+//footer ever to the bottom
 body{
   background: $primary;
   color: $secondary;
+  margin: 0;
+}
+
+*{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }

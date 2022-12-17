@@ -1,8 +1,23 @@
+@import '../styles.scss';
+
 main{
   display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
   .image_title {
-    min-width: 500px;
-    width: 50%;
+    height: 15%;
     margin: 0 auto;
+    min-height: 100px;
+    min-width: 350px;
+    width: 40%;
   }
+}
+
+footer{
+  background: $tertiary;
+  font-size: .8rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
