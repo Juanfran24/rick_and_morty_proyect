@@ -1,4 +1,50 @@
-.catalogy-content{
+@import '../../styles.scss';
+
+.catalogy-container{
   display: flex;
-  
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.catalogy-list-content{
+  justify-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+  row-gap: 4rem;
+  justify-content: center;
+  // margin-top: 2rem;
+  padding: 0px;
+  width: 70%;
+  margin-right: 0px;
+}
+
+.catalogy__item{
+  // border: solid;
+  border-radius: 1rem;
+  list-style: none;
+  min-width: 200px;
+  width: 20%;
+  background-color: $quaternary;
+  transition: .2s;
+  img {
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    width: 100%;
+  }
+  h3{
+    // margin-left: 1rem;
+    margin: 1rem;
+  }
+  p{
+    margin-left: 1rem;
+  }
+}
+
+.catalogy__item:hover{
+  background-color: $terciary;
+  color: $secondary;
+  cursor: pointer;
+  width: 23%;
+  transition: .2s;
 }

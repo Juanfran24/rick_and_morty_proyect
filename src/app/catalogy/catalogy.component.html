@@ -1,7 +1,32 @@
-<section class="catalogy-content">
-  <div class="catalogy-content__container__cards__card animate__animated animate__fadeInDown animate__delay-2s" *ngForIn="let chart in characters">
-    <img src={{chart.image}} alt="rick">
-    <h3>{{chart.name}}</h3>
-    <p>Human</p>
-  </div>
+<section class="catalogy-container">
+  <ul class="catalogy-list-content">
+    <li *ngFor="let chart of characters; let i = index" class="animate__animated animate__fadeInLeft animate__delay-2s catalogy__item" (click)="setCharacter(chart.id)">
+      <div *ngIf="characterId !== i+1">
+        <img [src]="chart.image" alt="rick">
+        <h3>{{chart.name}}</h3>
+        <p>{{chart.species}}</p>
+      </div>
+      <div *ngIf="characterId === i+1" (click)="setCharacter(chart.id)" class="animate__animated animate__flipInY">
+        <ul>
+          <li>
+            <strong>status:</strong>{{chart.status}}
+          </li>
+          <li>
+            <strong>species:</strong>{{chart.species}}
+          </li>
+          <li>
+            <strong>origin:</strong>{{chart.origin.name}}
+          </li>
+          <li>
+            <strong>location:</strong>{{chart.location.name}}
+          </li>
+          <li>
+            <strong>gender:</strong>{{chart.gender}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </section>
+
+
