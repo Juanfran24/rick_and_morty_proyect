@@ -1,27 +1,32 @@
 <section class="catalogy-container">
   <ul class="catalogy-list-content">
-    <li *ngFor="let chart of characters; let i = index" class="animate__animated animate__fadeInLeft animate__delay-2s catalogy__item" (click)="setCharacter(chart.id)">
-      <div *ngIf="characterId !== i+1">
+    <li *ngFor="let chart of characters; let i = index" class="animate__animated animate__fadeInLeft animate__delay-2s catalogy-item" (click)="setCharacter(chart.id)">
+      <div *ngIf="characterId !== i+1" class="catalogy-item-non-selected">
         <img [src]="chart.image" alt="rick">
-        <h3>{{chart.name}}</h3>
-        <p>{{chart.species}}</p>
+        <div class="catalogy-item-description">
+          <h3>{{chart.name}}</h3>
+          <p>{{chart.species}}</p>
+        </div>
       </div>
-      <div *ngIf="characterId === i+1" (click)="setCharacter(chart.id)" class="animate__animated animate__flipInY">
-        <ul>
+      <div *ngIf="characterId === i+1" class="catalogy-item-selected">
+        <ul class="catalogy-item-selected-list">
           <li>
-            <strong>status:</strong>{{chart.status}}
+            <h1>{{chart.name}}</h1>
           </li>
           <li>
-            <strong>species:</strong>{{chart.species}}
+            <strong>Status:&nbsp;</strong>{{chart.status}}
           </li>
           <li>
-            <strong>origin:</strong>{{chart.origin.name}}
+            <strong>Species:&nbsp;</strong>{{chart.species}}
           </li>
           <li>
-            <strong>location:</strong>{{chart.location.name}}
+            <strong>Origin:&nbsp;</strong>{{chart.origin.name}}
           </li>
           <li>
-            <strong>gender:</strong>{{chart.gender}}
+            <strong>Location:&nbsp;</strong>{{chart.location.name}}
+          </li>
+          <li>
+            <strong>Gender:&nbsp;</strong>{{chart.gender}}
           </li>
         </ul>
       </div>
