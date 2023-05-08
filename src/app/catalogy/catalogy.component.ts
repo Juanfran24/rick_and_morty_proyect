@@ -5,26 +5,39 @@ import { ApiService } from './services/api.service';
 @Component({
   selector: 'app-catalogy',
   templateUrl: './catalogy.component.html',
-  styleUrls: ['./catalogy.component.scss']
+  styleUrls: ['./catalogy.component.scss'],
 })
 export class CatalogyComponent implements OnInit {
-
   characters: Character[] = [];
-  characterId: number = 0;
+  characterName: string = '';
+  searchText: string = '';
+  isNotFound: boolean = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getCharacters().subscribe((data: any) => {
+    this.apiService.getAllCharacters().subscribe((data: any) => {
       this.characters = data.results as Character[];
     });
   }
 
-  setCharacter(id : number): void {
-    if(id == this.characterId){
-      this.characterId = 0;
+  setCharacter(name: string): void {
+    if (name == this.characterName) {
+      this.characterName = '';
       return;
     }
-    this.characterId = id;
+    this.characterName = name;
+  }
+
+  searchCharacters(name: string): void {
+    this.apiService.getCharactersFiltered(name).subscribe({
+      next: (response : any) => {
+        if (name === '') return alert('search is required');
+        this.characters = response.results as Character[];
+      },
+      error: err => {
+        this.isNotFound = true;
+      }
+    });
   }
 }

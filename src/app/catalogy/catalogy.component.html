@@ -1,37 +1,45 @@
 <section class="catalogy-container">
-  <ul class="catalogy-list-content">
-    <li *ngFor="let chart of characters; let i = index" class="animate__animated animate__fadeInLeft animate__delay-2s catalogy-item" (click)="setCharacter(chart.id)">
-      <div *ngIf="characterId !== i+1" class="catalogy-item-non-selected">
+  <!-- input with filter -->
+  <div class="animate__animated animate__fadeInDown animate__delay-2s catalogy-filter input-content">
+    <input class="" type="text" placeholder="Type name or species..." [(ngModel)]="searchText">
+    <button (click)="searchCharacters(searchText)">Search</button>
+  </div>
+  <ul class="catalogy-list-content" *ngIf="!isNotFound">
+    <li *ngFor="let chart of characters " class="animate__animated animate__fadeInLeft animate__delay-2s catalogy-item" (click)="setCharacter(chart.name)">
+      <div *ngIf="characterName !== chart.name" class="catalogy-item-non-selected">
         <img [src]="chart.image" alt="rick">
         <div class="catalogy-item-description">
           <h3>{{chart.name}}</h3>
           <p>{{chart.species}}</p>
         </div>
       </div>
-      <div *ngIf="characterId === i+1" class="catalogy-item-selected">
+      <div *ngIf="characterName === chart.name" class="catalogy-item-selected">
         <ul class="catalogy-item-selected-list">
           <li>
             <h1>{{chart.name}}</h1>
           </li>
           <li>
-            <strong>Status:&nbsp;</strong>{{chart.status}}
+            <p><strong>Status:&nbsp;</strong>{{chart.status}}</p>
           </li>
           <li>
-            <strong>Species:&nbsp;</strong>{{chart.species}}
+            <p><strong>Species:&nbsp;</strong>{{chart.species}}</p>
           </li>
           <li>
-            <strong>Origin:&nbsp;</strong>{{chart.origin.name}}
+            <p><strong>Origin:&nbsp;</strong>{{chart.origin.name}}</p>
           </li>
           <li>
-            <strong>Location:&nbsp;</strong>{{chart.location.name}}
+            <p><strong>Location:&nbsp;</strong>{{chart.location.name}}</p>
           </li>
           <li>
-            <strong>Gender:&nbsp;</strong>{{chart.gender}}
+            <p><strong>Gender:&nbsp;</strong>{{chart.gender}}</p>
           </li>
         </ul>
       </div>
     </li>
   </ul>
+  <div *ngIf="isNotFound">
+    <p>Not found</p>
+  </div>
 </section>
 
 
